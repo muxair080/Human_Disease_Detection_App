@@ -42,10 +42,9 @@ def bone_fracture():
         arr = arr/255
 
         prediction = BONE_MODEL.predict([arr])
-        print(prediction.max())
-        print(BONE_FRACTURE_CLASSES[prediction.argmax()])
-        spaces = " " * 15
-        st.write(f'Predicted Result : {BONE_FRACTURE_CLASSES[prediction.argmax()]}  and Confidence Level : {prediction.max()}')
+        confidence_level = round(prediction.max(),2)
+        predicted_class  = BONE_FRACTURE_CLASSES[prediction.argmax()]
+        st.write(f'Predicted Result : {predicted_class}  and Confidence Level : {confidence_level}')
 
 def pneumonia():
     if uploaded_file is not None:
@@ -58,10 +57,10 @@ def pneumonia():
         arr = arr/255
 
         prediction = PNEUMONIA_MODEL.predict([arr])
-        print(prediction.max())
-        print(PNEUMONIA_CLASSES[prediction.argmax()])
-        spaces = " " * 15
-        st.write(f'Predicted Result : {PNEUMONIA_CLASSES[prediction.argmax()]}  and Confidence Level : {prediction.max()}')
+     
+        confidence_level = round(prediction.max(),2)
+        predicted_class = PNEUMONIA_CLASSES[prediction.argmax()]
+        st.write(f'Predicted Result : {predicted_class}  and Confidence Level : {confidence_level}')
 
 def maleria():
     if uploaded_file is not None:
@@ -75,9 +74,10 @@ def maleria():
         arr = np.expand_dims(arr, axis=0)
 
         prediction = MALERIA_MODEL.predict(arr)
-        print(prediction.max())
-        print(MALERIA_CLASSES[prediction.argmax()])
-        st.write(f'Predicted Result : {MALERIA_CLASSES[prediction.argmax()]}  and Confidence Level : {prediction.max()}')
+
+        confidence_level = round(prediction.max(),2)
+        predicted_class  = MALERIA_CLASSES[prediction.argmax()]
+        st.write(f'Predicted Result : {predicted_class}  and Confidence Level : {confidence_level}')
 
 
 
